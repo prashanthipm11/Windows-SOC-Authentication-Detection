@@ -1,0 +1,45 @@
+WINDOWS SOC AUTHENTICATION DETECTION
+CONTROLLED LAB TEST EVIDENCE
+========================================
+
+Test Type:
+Controlled Windows authentication failure
+
+Detection:
+Windows Security Event ID 4625
+
+Production Detection Configuration:
+Detection Window: 5 minutes
+Alert Threshold: 5 failed logons
+Alert ID: WIN-AUTH-4625
+Severity: Medium
+
+Controlled Test Configuration:
+Alert Threshold temporarily changed to 1
+Purpose: Validate detection and correlation logic
+Production threshold restored to 5 after testing
+
+Detected Event:
+Event ID: 4625
+Logon Type: 2
+Process: C:\Windows\System32\svchost.exe
+Process ID: 0xa3c
+Source IP: 127.0.0.1
+
+Correlated Security Events:
+4624 - Successful logon
+4625 - Failed logon
+4648 - Explicit credential logon
+4672 - Special privileges assigned
+
+Result:
+Detection triggered successfully.
+
+Incident report generated successfully.
+
+The controlled failed authentication was intentionally
+generated in the local Windows lab for testing purposes.
+
+Final Production Configuration:
+Detection Window: 5 minutes
+Alert Threshold: 5

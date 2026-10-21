@@ -1,0 +1,127 @@
+﻿========================================
+WINDOWS SOC INCIDENT REPORT
+========================================
+
+Alert ID: WIN-AUTH-4625
+Severity: Medium
+Detection Time: 09/19/2026 20:38:47
+
+Detection Rule:
+1 or more failed Windows logons
+within the last 5 minutes.
+
+Event ID: 4625
+Failed Logons Detected: 1
+
+========================================
+EVENT DETAILS
+========================================
+Time: 09/19/2026 20:38:28
+Event ID: 4625
+Target Account: -
+Logon Type: 2
+Status: 0xc000006d
+SubStatus: 0xc0000380
+Logon Process: User32 
+Authentication Package: Negotiate
+Process: C:\Windows\System32\svchost.exe
+Process ID: 0xa3c
+Executable Path: C:\WINDOWS\system32\svchost.exe
+Service Name: UserManager
+Service Display Name: User Manager
+Source IP: 127.0.0.1
+
+----------------------------------------
+
+CORRELATED SECURITY EVENTS
+----------------------------------------
+Time: 09/19/2026 20:38:31
+Event ID: 4672
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4648
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4672
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:31
+Event ID: 4648
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:28
+Event ID: 4625
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:25
+Event ID: 4672
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:25
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:24
+Event ID: 4672
+Provider: Microsoft-Windows-Security-Auditing
+Time: 09/19/2026 20:38:24
+Event ID: 4624
+Provider: Microsoft-Windows-Security-Auditing
+
+========================================
+INITIAL ASSESSMENT
+========================================
+
+The detected events are Windows Event ID 4625
+failed authentication events.
+
+The analyst should review:
+- Target account
+- Logon type
+- Source IP address
+- Process responsible for the event
+- Frequency and timing of the events
+
+A localhost source address (127.0.0.1) indicates that
+the event originated from the local machine. This alone
+does not establish whether the activity is benign or malicious.
+
+The presence of svchost.exe should also be investigated
+in context because svchost.exe is a legitimate Windows
+host process used by multiple services.
+
+========================================
+DISPOSITION
+========================================
+
+Status: Requires Investigation
+
+The detector identifies suspicious authentication activity
+but does not automatically classify the activity as malicious.
+
+The analyst should determine whether the events were
+authorized or associated with expected system activity.
+
+========================================
+RECOMMENDED ACTIONS
+========================================
+
+1. Review the affected account.
+2. Review the source IP address.
+3. Review the logon type.
+4. Investigate the process responsible for the event.
+5. Correlate related Windows Security events.
+6. Determine whether the activity is authorized.
+7. Escalate if repeated or suspicious authentication
+   activity is confirmed.
+
+========================================
+END OF REPORT
+========================================
